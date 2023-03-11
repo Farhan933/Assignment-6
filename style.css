@@ -1,0 +1,20 @@
+/* common style or utilites  */
+
+/* .................navigatio part...........  */
+.horizontal-rule{
+    margin-top: 90px;
+}
+/* Adding cursor in FAQ  */
+.cursor{
+    cursor: url(hand.cur), pointer;
+}
+/* For Accordian  */
+.accordian-style{
+    margin-left: 50%;
+}
+
+/* For allNews  */
+.color{
+    color: gray;
+    font-weight: 500;
+}
