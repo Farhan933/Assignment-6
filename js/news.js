@@ -37,7 +37,7 @@ let displayNews = value => {
 // Load Different Categories News 
 let loadDifferentCategoryNews = (id) => {
     let url = `https://openapi.programming-hero.com/api/news/category/${id}`;
-        fetch(url)
+    fetch(url)
         .then(response => response.json())
         .then(news => displayDifferentCategoryNews(news.data))
 };
@@ -45,7 +45,7 @@ loadDifferentCategoryNews();
 
 let displayDifferentCategoryNews = value => {
     let newsContainer = document.getElementById('news-container');
-        newsContainer.innerHTML = ``;
+    newsContainer.innerHTML = ``;
 
     value.forEach(array => {
         console.log(array)
@@ -56,12 +56,52 @@ let displayDifferentCategoryNews = value => {
               <div class="col-md-3">
                 <img src="${array.thumbnail_url ? array.thumbnail_url : "No thumbnail image"}" class="img-fluid rounded-start" alt="...">
               </div>
-              <div class="col-md-8">
+              <div class="col-md-8 d-flex align-items-center">
                 <div class="card-body">
                   <h5 class="card-title">${array.title ? array.title : "No title"}</h5>
                   <p class="card-text">${array.details.slice(0, 200)}</p>
-                  <p class="card-text"><small class="text-muted">Category_id: ${array.category_id ? array. category_id : "No category"}
+                  <p class="card-text"><small class="text-muted">Category_id: ${array.category_id ? array.category_id : "No category"}
                   </small></p>
+                    <div class = "d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center justify-content-center ">
+                            <p class = "pe-3">
+                                <img style="
+                                margin: auto;
+                                width: 8vh;
+                                height: 8vh;
+                                border-radius: 50%;
+                                " src="${array.author.img}" alt="Logo" width="30" height="24"
+                                class="d-inline-block align-text-top">
+                            </p>
+                            <div>
+                                <h6>${array.author.name ? array.author.name : 'Sorry not found author name'}</h6>
+                                <small>${array.published_date ? array.published_date : "Not find published data"}</small>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-eye"></i>
+                        <h6 class = "ps-3">${array.total_view}</h6>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-center">
+                        <div> 
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                            <i class="fa fa-light fa-star"></i>  
+                            <i class="fa fa-light fa-star"></i>  
+                            <i class="fa fa-light fa-star"></i>  
+                            <i class="fa fa-light fa-star"></i>    
+                        </div>
+                        <div>
+                            <h6 class = "ps-3">${array.rating.number ? array.rating.number : 'no ratings yet'}</h6>
+                        </div>
+                        </div>
+                        
+                        <div>
+                            <button class = "btn btn-primary">see more..</button>
+                        </div>
+
+                    </div>
                 </div>
               </div>
             </div>
