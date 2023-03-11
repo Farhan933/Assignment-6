@@ -17,4 +17,9 @@
 .color{
     color: gray;
     font-weight: 500;
+    cursor: url(hand.cur), pointer;
 }
+.color:hover{
+    color: rgb(8, 8, 235);
+}
+
