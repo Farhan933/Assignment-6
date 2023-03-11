@@ -75,7 +75,7 @@ let displayDifferentCategoryNews = value => {
                             </p>
                             <div>
                                 <h6>${array.author.name ? array.author.name : 'Sorry not found author name'}</h6>
-                                <small>${array.published_date ? array.published_date : "Not find published data"}</small>
+                                <p style = "color: gray">${array.author.published_date ? array.author. published_date : "Not find published data"}</p>
                             </div>
                         </div>
 
