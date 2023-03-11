@@ -133,6 +133,9 @@
         <div class="container horizontal-rule">
             <hr>
         </div>
+    </header>
+
+    <main>
 
         <!-- Dynamicly found all types of news  -->
         <section class="container mb-3">
@@ -144,10 +147,32 @@
         <section id="news-container" class="container">
 
         </section>
-    </header>
-    <main>
+
+        <!-- Adding Modal -->
+        <section class="container">
+
+            <!-- Modal -->
+            <div class="modal fade" id="specificDetailsModal" tabindex="-1" aria-labelledby="specificDetailsModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="specificDetailsModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="modal-image" class="modal-body">
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
+
     <footer>
         <section class="container text-center m-5 fw-semibold" style="color: gray">
             <small>Copyright@ 1899-1995 all news</small>

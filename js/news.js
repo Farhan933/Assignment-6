@@ -96,9 +96,9 @@ let displayDifferentCategoryNews = value => {
                             <h6 class = "ps-3">${array.rating.number ? array.rating.number : 'no ratings yet'}</h6>
                         </div>
                         </div>
-                        
+
                         <div>
-                            <button class = "btn btn-primary">see more..</button>
+                            <button onclick = "loadSpecificDetails('${array._id}')" class = "btn btn-primary" data-bs-toggle="modal" data-bs-target="#specificDetailsModal">see more..</button>
                         </div>
 
                     </div>
@@ -110,3 +110,24 @@ let displayDifferentCategoryNews = value => {
         newsContainer.appendChild(createNewsContainerDiv);
     })
 }
+
+
+let loadSpecificDetails = (news_id) =>{
+    let url = ` https://openapi.programming-hero.com/api/news/${news_id}`;
+    fetch(url)
+    .then(response => response.json())
+    .then(news => displaySpecificDetails(news.data[0]))
+}
+
+let displaySpecificDetails = value =>{
+    let modalTitle = document.getElementById('specificDetailsModalLabel');
+        modalTitle.innerHTML = `
+        <p>Title: ${value.title ? value.title : 'No title found'} </p>
+        <h6>Published Date: ${value.author.published_date ? value.author.published_date : "Not yet"
+        }</h6>
+        <h6>Name: ${value.author.name ? value.author.name : 'No name found'} </h6>
+        <h6>Total_View: ${value.total_view ? value.total_view : 'No view'} </h6>
+        `;        
+}
+
+loadSpecificDetails();
