@@ -41,14 +41,24 @@ let loadDifferentCategoryNews = (id) => {
         .then(response => response.json())
         .then(news => displayDifferentCategoryNews(news.data))
 };
-loadDifferentCategoryNews();
+
+// here comment out the function so that by default it doesn't show items category
+
+// loadDifferentCategoryNews();
 
 let displayDifferentCategoryNews = value => {
     let newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = ``;
 
+// For display category items numbers...
+    array = value.length;
+    let textField = document.getElementById('text-field');
+        textField.innerText = array;
+    let inputField = document.getElementById('input-field');
+        inputField.value = textField.innerText; 
+
+        
     value.forEach(array => {
-        console.log(array)
         let createNewsContainerDiv = document.createElement('div');
         createNewsContainerDiv.innerHTML = `
             <div class="card mb-4">
@@ -150,3 +160,4 @@ document.getElementById('all-news').addEventListener('click', function(){
     // start spinner..
     toggleSpinner(true)
 })
+
