@@ -31,7 +31,7 @@ let displayNews = value => {
         <p onclick = "loadDifferentCategoryNews('${getNews.category_id}')" class="color">${getNews.category_name}</p> 
     `;
         allNews.appendChild(createNewsDiv);
-    })
+    });
 }
 
 // Load Different Categories News 
@@ -75,7 +75,7 @@ let displayDifferentCategoryNews = value => {
                             </p>
                             <div>
                                 <h6>${array.author.name ? array.author.name : 'Sorry not found author name'}</h6>
-                                <p style = "color: gray">${array.author.published_date ? array.author. published_date : "Not find published data"}</p>
+                                <p style = "color: gray">${array.author.published_date ? array.author.published_date : "Not find published data"}</p>
                             </div>
                         </div>
 
@@ -108,26 +108,45 @@ let displayDifferentCategoryNews = value => {
         </div>
             `
         newsContainer.appendChild(createNewsContainerDiv);
-    })
+    });
+    // stop spinner
+    toggleSpinner(false)
 }
 
 
-let loadSpecificDetails = (news_id) =>{
+let loadSpecificDetails = (news_id) => {
     let url = ` https://openapi.programming-hero.com/api/news/${news_id}`;
     fetch(url)
-    .then(response => response.json())
-    .then(news => displaySpecificDetails(news.data[0]))
+        .then(response => response.json())
+        .then(news => displaySpecificDetails(news.data[0]))
 }
 
-let displaySpecificDetails = value =>{
+let displaySpecificDetails = value => {
     let modalTitle = document.getElementById('specificDetailsModalLabel');
-        modalTitle.innerHTML = `
+    modalTitle.innerHTML = `
         <p>Title: ${value.title ? value.title : 'No title found'} </p>
         <h6>Published Date: ${value.author.published_date ? value.author.published_date : "Not yet"
         }</h6>
         <h6>Name: ${value.author.name ? value.author.name : 'No name found'} </h6>
         <h6>Total_View: ${value.total_view ? value.total_view : 'No view'} </h6>
-        `;        
+        `;
 }
 
 loadSpecificDetails();
+
+
+// Adding Spinner or loader..
+let toggleSpinner = isLoading => {
+    let spinner = document.getElementById('loader');
+    if (isLoading) {
+        spinner.classList.remove('d-none');
+    }
+    else {
+        spinner.classList.add('d-none');
+    }
+};
+
+document.getElementById('all-news').addEventListener('click', function(){
+    // start spinner..
+    toggleSpinner(true)
+})
