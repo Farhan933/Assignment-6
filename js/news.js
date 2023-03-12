@@ -42,7 +42,7 @@ let loadDifferentCategoryNews = (id) => {
         .then(news => displayDifferentCategoryNews(news.data))
 };
 
-// here comment out the function so that by default it doesn't show items category
+// here comment out the function so that by default it doesn't show items number in a category
 
 // loadDifferentCategoryNews();
 
